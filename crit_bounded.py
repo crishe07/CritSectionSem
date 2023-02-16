@@ -22,6 +22,8 @@ def task(common, tid, bs):
         common.value = v
         print(f'{tid}−{i}: End of critical section')
         bs.release()
+        time.sleep(0.01)
+        
 
 def main():
     lp = []
@@ -36,6 +38,9 @@ def main():
         p.join()
     print (f"Valor final del contador {common.value}")
     print ("fin")
+    
+if __name__=='__main__':
+	main()
 
 if __name__ == "__main__":
     main()

@@ -27,6 +27,7 @@ def task(common, tid, lock):
         common.value = v
         print(f'{tid}−{i}: End of critical section')
         lock.release()
+        time.sleep(0.01)
         
 
 def main():
