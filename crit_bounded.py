@@ -1,13 +1,13 @@
 """
-Created on Thu Feb 16 09:01:35 2023
+Created on Thu Feb 16 09:16:08 2023
 
 @author: alumno
 """
-
+from multiprocessing import Process
+from multiprocessing import Value,BoundedSemaphore
 import time
-from multiprocessing import Process, BoundedSemaphore, Value
-N = 8
 
+N=8
 def task(common, tid, bs):
     a = 0
     for i in range(100):
@@ -18,6 +18,7 @@ def task(common, tid, bs):
         print(f'{tid}−{i}: Critical section')
         v = common.value + 1
         print(f'{tid}−{i}: Inside critical section')
+        #time.sleep(0.01)
         common.value = v
         print(f'{tid}−{i}: End of critical section')
         bs.release()
